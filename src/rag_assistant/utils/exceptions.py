@@ -30,3 +30,5 @@ class LLMError(RagAssistantError):
 class ChunkingError(RagAssistantError): """Erreur lors du découpage 
     des documents en chunks."""
 
+class VectorStoreError(RagAssistantError):
+    """Erreur liée à la base vectorielle."""
