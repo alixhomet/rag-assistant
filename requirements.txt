@@ -1,0 +1,19 @@
+# === Cœur applicatif ===
+streamlit>=1.40
+
+# === Orchestration RAG (LangChain 1.x) ===
+langchain>=1.0
+langchain-mistralai>=0.2
+langchain-chroma>=0.2
+langchain-text-splitters>=0.3
+
+# === Base vectorielle ===
+chromadb>=0.5
+
+# === Extraction PDF ===
+pypdf>=5.0
+
+# === Configuration & validation ===
+pydantic>=2.7
+pydantic-settings>=2.3
+python-dotenv>=1.0
