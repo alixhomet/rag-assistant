@@ -27,3 +27,6 @@ class RetrievalError(RagAssistantError):
 
 class LLMError(RagAssistantError):
     """Erreur lors de l'appel au modèle de génération."""
+class ChunkingError(RagAssistantError): """Erreur lors du découpage 
+    des documents en chunks."""
+
