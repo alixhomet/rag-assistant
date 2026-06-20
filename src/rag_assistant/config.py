@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     )
 
     # --- Mistral AI ---
+    embedding_max_retries: int = Field(3, ge=0, description="Tentatives en cas d'échec API")
+    embedding_timeout: int = Field(60, gt=0, description="Timeout d'un appel embeddings (s)")  
     mistral_api_key: SecretStr = Field(..., description="Clé API Mistral (obligatoire)")
     chat_model: str = Field("mistral-small-latest", description="Modèle de génération")
     embedding_model: str = Field("mistral-embed", description="Modèle d'embeddings")
