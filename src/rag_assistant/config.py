@@ -23,11 +23,13 @@ class Settings(BaseSettings):
     # --- Mistral AI ---
     embedding_max_retries: int = Field(3, ge=0, description="Tentatives en cas d'échec API")
     embedding_timeout: int = Field(60, gt=0, description="Timeout d'un appel embeddings (s)")  
+    llm_max_retries: int = Field(3, ge=0, description="Tentatives LLM en cas d'échec API")
+    llm_timeout: int = Field(60, gt=0, description="Timeout d'un appel LLM (s)") 
     mistral_api_key: SecretStr = Field(..., description="Clé API Mistral (obligatoire)")
     chat_model: str = Field("mistral-small-latest", description="Modèle de génération")
     embedding_model: str = Field("mistral-embed", description="Modèle d'embeddings")
     temperature: float = Field(0.1, ge=0.0, le=1.0, description="Créativité du LLM")
-
+    
     # --- Paramètres RAG ---
     chunk_size: int = Field(1000, gt=0, description="Taille d'un chunk (caractères)")
     chunk_overlap: int = Field(150, ge=0, description="Chevauchement entre chunks")
