@@ -61,3 +61,6 @@ def get_settings() -> Settings:
     settings = Settings()
     settings.ensure_directories()
     return settings
+# --- Mistral AI (ajouts) ---
+    llm_max_retries: int = Field(3, ge=0, description="Tentatives LLM en cas d'échec API")
+    llm_timeout: int = Field(60, gt=0, description="Timeout d'un appel LLM (s)")
