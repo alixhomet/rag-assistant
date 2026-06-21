@@ -1,0 +1,25 @@
+services:
+  rag-assistant:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rag-assistant:latest
+    container_name: rag-assistant
+    ports:
+      - "8501:8501"
+    # Les secrets sont injectés depuis le .env local, jamais inscrits dans l'image
+    env_file:
+      - .env
+    # Volume nommé : la base ChromaDB survit aux redémarrages/reconstructions
+    volumes:
+      - rag_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  rag_data:
